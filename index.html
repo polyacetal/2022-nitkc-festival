@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<title>釧路高専祭</title>
+		<style type="text/css">
+			canvas{border: 1px solid black;}
+		</style>
+	</head>
+	<script>
+		window.addEventListener('load', eventWindowLoaded, false);
+		function eventWindowLoaded(){
+			mainApp();
+		}
+		function mainApp(){
+			//canvas オブジェクトの取得
+			var canvas = document.getElementById('mycanvas');
+			//ブラウザがcanvasに対応してなかったとき
+			if(!canvas.getContext){
+				return;
+			}
+			//canvasコンテキストの取得
+			var cont = canvas.getContext('2d');
+		}
+
+	</script>
+	<body>
+		<div id="canvasblock">
+			<canvas id="mycanvas" width="400" height="400">
+				このブラウザはCanvasに対応していません。
+			</canvas>
+		</div>
+		<div class="button">
+		</div>
+	</body>
+</html>
