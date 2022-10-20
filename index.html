@@ -21,6 +21,17 @@
 			}
 			//canvasコンテキストの取得
 			var cont = canvas.getContext('2d');
+
+			DrawSquare(25, 25, cont);
+			DrawSquare(50, 25, cont);
+			DrawSquare(25, 50, cont);
+			DrawSquare(100, 100, cont);
+		}
+
+		function DrawSquare(x, y, cont){
+			cont.fillRect(x, y, 100, 100);
+			cont.clearRect(x + 20, y + 20, 60, 60);
+			cont.strokeRect(x + 25, y + 25, 50, 50);
 		}
 
 	</script>
