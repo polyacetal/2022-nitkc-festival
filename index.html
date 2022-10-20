@@ -12,6 +12,7 @@
 		function eventWindowLoaded(){
 			mainApp();
 		}
+
 		function mainApp(){
 			//canvas オブジェクトの取得
 			var canvas = document.getElementById('mycanvas');
@@ -22,16 +23,20 @@
 			//canvasコンテキストの取得
 			var cont = canvas.getContext('2d');
 
-			DrawSquare(25, 25, cont);
-			DrawSquare(50, 25, cont);
-			DrawSquare(25, 50, cont);
-			DrawSquare(100, 100, cont);
-		}
+			canvas.addEventListener('click', TouchDraw, false);
+			function DrawSquare(x, y){
+				cont.fillRect(x, y, 100, 100);
+				cont.clearRect(x + 20, y + 20, 60, 60);
+				cont.strokeRect(x + 25, y + 25, 50, 50);
+			}
 
-		function DrawSquare(x, y, cont){
-			cont.fillRect(x, y, 100, 100);
-			cont.clearRect(x + 20, y + 20, 60, 60);
-			cont.strokeRect(x + 25, y + 25, 50, 50);
+			function TouchDraw(e){
+				var rect = e.target.getBoundingClientRect();
+				var x = e.clientX - rect.left;
+				var y = e.clientY - rect.top;
+
+				DrawSquare(x - 50, y - 50);
+			}
 		}
 
 	</script>
