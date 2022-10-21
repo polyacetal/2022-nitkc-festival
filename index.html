@@ -10,11 +10,11 @@
 	</head>
 	<script>
 		window.addEventListener('load', eventWindowLoaded, false);
-		function eventWindowLoaded(){
+		function eventWindowLoaded() {
 			mainApp();
 		}
 
-		function mainApp(){
+		function mainApp() {
 			//canvas オブジェクトの取得
 			var canvas = document.getElementById('mycanvas');
 			//ブラウザがcanvasに対応してなかったとき
@@ -23,19 +23,19 @@
 			}
 			//canvasコンテキストの取得
 			var cont = canvas.getContext('2d');
+
 			var screenWidth = canvas.width;
 			var screenHeight = canvas.height;
 			var mode = "square";
 
-
-			function DrawSquare(x, y){
+			function DrawSquare(x, y) {
 				cont.fillStyle = 'black';
 				cont.fillRect(x, y, 100, 100);
 				cont.clearRect(x + 20, y + 20, 60, 60);
 				cont.strokeRect(x + 25, y + 25, 50, 50);
 			}
 			
-			function DrawRound(x, y){
+			function DrawRound(x, y) {
 				cont.beginPath();
 				cont.arc(x, y, 50, 0, Math.PI * 2, false);
 				cont.fillStyle = 'black';
@@ -53,7 +53,7 @@
 				cont.closePath();
 			}
 
-			function TouchDraw(e){
+			function TouchDraw(e) {
 				var rect = e.target.getBoundingClientRect();
 				var x = e.clientX - rect.left;
 				var y = e.clientY - rect.top;
@@ -68,25 +68,42 @@
 				} 
 			}
 
-			function Clear(){
+			function Clear() {
 				cont.clearRect(0, 0, screenWidth, screenHeight);
+			}
+
+			function PushBtn(e) {
+				var btnId = document.getElementById(e.target.id);
+				btnId.style.background = '#000000';
+				btnId.style.color = '#ffffff';
+			}
+
+			function BtnColorReset() {
+				bt1.style.background = '#ffffff';
+				bt1.style.color = '#000000';
+				bt2.style.background = '#ffffff';
+				bt2.style.color = '#000000';
+				bt3.style.background = '#ffffff';
+				bt3.style.color = '#000000';
 			}
 
 			canvas.addEventListener('click', TouchDraw, false);
 			var bt1 = document.getElementById("button1");
-			bt1.addEventListener('click', Clear, false);
+			bt1.addEventListener('click', (e) => {BtnColorReset();Clear()}, false);
 			var bt2 = document.getElementById("button2");
-			bt2.addEventListener('click', function(){mode = "square"}, false);
+			bt2.addEventListener('click', (e) => {PushBtn(e);mode = "square"}, false);
 			var bt3 = document.getElementById("button3");
-			bt3.addEventListener('click', function(){mode = "round"}, false);
+			bt3.addEventListener('click', (e) => {PushBtn(e);mode = "round"}, false);
 		}
 	</script>
 	<body>
+		<h1> 
 		<div id="canvasblock">
 			<canvas id="mycanvas" width="800" height="800">
 				このブラウザはCanvasに対応していません。
 			</canvas>
 		</div>
+		<img id="qr" src="./QR_code.png" \>
 		<div class="button">
 			<input type="button" id="button1" class="btn" value="全消去">
 			<input type="button" id="button2" class="btn" value="四角スタンプ">
