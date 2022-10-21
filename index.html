@@ -74,6 +74,7 @@
 
 			function PushBtn(e) {
 				var btnId = document.getElementById(e.target.id);
+				BtnColorReset();
 				btnId.style.background = '#000000';
 				btnId.style.color = '#ffffff';
 			}
@@ -111,6 +112,7 @@
 				</div>
 			</div>
 		</div>
+		<br><br>
 		<div class="button">
 			<input type="button" id="button1" class="btn" value="全消去">
 			<input type="button" id="button2" class="btn" value="四角スタンプ">
