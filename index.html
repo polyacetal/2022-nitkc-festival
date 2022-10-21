@@ -22,8 +22,11 @@
 			}
 			//canvasコンテキストの取得
 			var cont = canvas.getContext('2d');
+			var screenWidth = canvas.width;
+			var screenHeight = canvas.height;
+			var mode = "square";
 
-			canvas.addEventListener('click', TouchDraw, false);
+
 			function DrawSquare(x, y){
 				cont.fillRect(x, y, 100, 100);
 				cont.clearRect(x + 20, y + 20, 60, 60);
@@ -37,8 +40,19 @@
 
 				DrawSquare(x - 50, y - 50);
 			}
-		}
 
+			function Clear(){
+				cont.clearRect(0, 0, screenWidth, screenHeight);
+			}
+
+			canvas.addEventListener('click', TouchDraw, false);
+			var bt1 = document.getElementById("button1");
+			bt1.addEventListener('click', Clear, false);
+			var bt2 = document.getElementById("button2");
+			bt2.addEventListener('click', function(){mode = "square"}, false);
+			var bt3 = document.getElementById("button3");
+			bt3.addEventListener('click', function(){mode = "round"}, false);
+		}
 	</script>
 	<body>
 		<div id="canvasblock">
@@ -47,6 +61,9 @@
 			</canvas>
 		</div>
 		<div class="button">
+			<input type="button" id="button1" value="全消去">
+			<input type="button" id="button2" value="四角スタンプ">
+			<input type="button" id="button3" value="丸スタンプ">
 		</div>
 	</body>
 </html>
