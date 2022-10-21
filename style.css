@@ -42,7 +42,7 @@ div.button {
     text-align: center;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (min-width: 960px) {
     #qr {
         display: none;
     }
