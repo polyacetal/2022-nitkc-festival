@@ -28,9 +28,28 @@
 
 
 			function DrawSquare(x, y){
+				cont.fillStyle = 'black';
 				cont.fillRect(x, y, 100, 100);
 				cont.clearRect(x + 20, y + 20, 60, 60);
 				cont.strokeRect(x + 25, y + 25, 50, 50);
+			}
+			
+			function DrawRound(x, y){
+				cont.beginPath();
+				cont.arc(x, y, 50, 0, Math.PI * 2, false);
+				cont.fillStyle = 'black';
+				cont.fill();
+				cont.closePath();
+				cont.beginPath();
+				cont.arc(x, y, 30, 0, Math.PI * 2, false);
+				cont.fillStyle = 'white';
+				cont.fill();
+				cont.closePath();
+				cont.beginPath();
+				cont.arc(x, y, 25, 0, Math.PI * 2, false);
+				cont.closePath();
+				cont.stroke();
+				cont.closePath();
 			}
 
 			function TouchDraw(e){
@@ -38,7 +57,14 @@
 				var x = e.clientX - rect.left;
 				var y = e.clientY - rect.top;
 
-				DrawSquare(x - 50, y - 50);
+				switch(mode){
+					case "square":
+						DrawSquare(x - 50, y - 50);
+						break;
+					case "round":
+						DrawRound(x, y);
+						break;
+				} 
 			}
 
 			function Clear(){
