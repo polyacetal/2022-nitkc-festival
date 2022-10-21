@@ -3,11 +3,21 @@
     box-sizing: inherit;
 }
 
-html{
+html {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 62.5%;
 
+}
+
+body {
+    background: #dddddd;
+    font-family: Meiryo;
+}
+
+h1 {
+    color: #000000;
+    font-size: 500%;
 }
 
 div.button {
@@ -47,7 +57,16 @@ div.flex_box {
 }
 
 @media screen and (max-width: 1080px) {
-    #qr {
+    .qr {
         display: none;
     }
+}
+
+#qr {
+    transform: translate(200px);
+}
+
+.qr_text {
+    transform: translate(270px);
+    font-size: 300%;
 }

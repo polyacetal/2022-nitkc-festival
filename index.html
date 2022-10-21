@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<title>釧路高専祭</title>
 		<style type="text/css">
-			canvas{border: 1px solid black;}
+			canvas{border: 1px solid black; background: #ffffff;}
 		</style>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
@@ -97,14 +97,18 @@
 		}
 	</script>
 	<body>
-		<h1> 
+		<h1> スタンプコーナー </h1> 
 		<div id="canvasblock" class="flex_box">
 			<canvas id="mycanvas" width="800" height="800">
 				このブラウザはCanvasに対応していません。
 			</canvas>
-			<div id="qr">
-				<img src="./QR_code.png" \>
-				This page.
+			<div class="qr">
+				<img id="qr" src="./QR_code.png" /><br>
+				<div class="qr_text">This page.<br>
+					<br><br><br>
+					スタンプは時間経過で追加していく予定です。<br>
+					楽しみにしていてください。
+				</div>
 			</div>
 		</div>
 		<div class="button">
