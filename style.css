@@ -42,7 +42,11 @@ div.button {
     text-align: center;
 }
 
-@media screen and (min-width: 960px) {
+div.flex_box {
+    display: flex;
+}
+
+@media screen and (max-width: 1080px) {
     #qr {
         display: none;
     }
