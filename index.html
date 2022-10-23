@@ -26,19 +26,22 @@
 
 			var screenWidth = canvas.width;
 			var screenHeight = canvas.height;
-			var mode = "square";
+			var shapeMode = "square";
+			var colorMode = 'black';
 
 			function DrawSquare(x, y) {
-				cont.fillStyle = 'black';
+				cont.fillStyle = colorMode;
+				cont.strokeStyle = colorMode;
 				cont.fillRect(x, y, 100, 100);
 				cont.clearRect(x + 20, y + 20, 60, 60);
 				cont.strokeRect(x + 25, y + 25, 50, 50);
 			}
 			
 			function DrawRound(x, y) {
+				cont.fillStyle = colorMode;
+				cont.strokeStyle = colorMode;
 				cont.beginPath();
 				cont.arc(x, y, 50, 0, Math.PI * 2, false);
-				cont.fillStyle = 'black';
 				cont.fill();
 				cont.closePath();
 				cont.beginPath();
@@ -58,7 +61,7 @@
 				var x = e.clientX - rect.left;
 				var y = e.clientY - rect.top;
 
-				switch(mode){
+				switch(shapeMode){
 					case "square":
 						DrawSquare(x - 50, y - 50);
 						break;
@@ -70,16 +73,27 @@
 
 			function Clear() {
 				cont.clearRect(0, 0, screenWidth, screenHeight);
+				bt2.style.background = '#000000';
+				bt2.style.color = '#ffffff';
+				bt4.style.background = '#000000';
+				bt4.style.color = '#ffffff';
 			}
 
-			function PushBtn(e) {
+			function PushUpBtn(e) {
 				var btnId = document.getElementById(e.target.id);
-				BtnColorReset();
+				UpBtnColorReset();
 				btnId.style.background = '#000000';
 				btnId.style.color = '#ffffff';
 			}
 
-			function BtnColorReset() {
+			function PushDwBtn(e) {
+				var btnId = document.getElementById(e.target.id);
+				DwBtnColorReset();
+				btnId.style.background = '#000000';
+				btnId.style.color = '#ffffff';
+			}
+
+			function UpBtnColorReset() {
 				bt1.style.background = '#ffffff';
 				bt1.style.color = '#000000';
 				bt2.style.background = '#ffffff';
@@ -88,13 +102,36 @@
 				bt3.style.color = '#000000';
 			}
 
+			function DwBtnColorReset() {
+				bt4.style.background = '#ffffff';
+				bt4.style.color = '#000000';
+				bt5.style.background = '#ffffff';
+				bt5.style.color = '#000000';
+				bt6.style.background = '#ffffff';
+				bt6.style.color = '#000000';
+				bt7.style.background = '#ffffff';
+				bt7.style.color = '#000000';
+			}
+
 			canvas.addEventListener('click', TouchDraw, false);
 			var bt1 = document.getElementById("button1");
-			bt1.addEventListener('click', (e) => {BtnColorReset();Clear()}, false);
+			bt1.addEventListener('click', (e) => {UpBtnColorReset();DwBtnColorReset();Clear()}, false);
 			var bt2 = document.getElementById("button2");
-			bt2.addEventListener('click', (e) => {PushBtn(e);mode = "square"}, false);
+			bt2.addEventListener('click', (e) => {PushUpBtn(e);shapeMode = "square"}, false);
+			bt2.style.background = '#000000';
+			bt2.style.color = '#ffffff';
 			var bt3 = document.getElementById("button3");
-			bt3.addEventListener('click', (e) => {PushBtn(e);mode = "round"}, false);
+			bt3.addEventListener('click', (e) => {PushUpBtn(e);shapeMode = "round"}, false);
+			var bt4 = document.getElementById("button4");
+			bt4.addEventListener('click', (e) => {PushDwBtn(e);colorMode = "black"}, false);
+			bt4.style.background = '#000000';
+			bt4.style.color = '#ffffff';
+			var bt5 = document.getElementById("button5");
+			bt5.addEventListener('click', (e) => {PushDwBtn(e);colorMode = "red"}, false);
+			var bt6 = document.getElementById("button6");
+			bt6.addEventListener('click', (e) => {PushDwBtn(e);colorMode = "blue"}, false);
+			var bt7 = document.getElementById("button7");
+			bt7.addEventListener('click', (e) => {PushDwBtn(e);colorMode = "yellow"}, false);
 		}
 	</script>
 	<body>
@@ -105,7 +142,6 @@
 			</canvas>
 			<div class="qr">
 				<img id="qr" src="./QR_code.png" />
-				<img id="qr" src="./QR_screen.png" />
 					<div class="qr_text">
 						This page.<br>
 						<br><br><br>
@@ -118,7 +154,12 @@
 		<div class="button">
 			<input type="button" id="button1" class="btn" value="全消去">
 			<input type="button" id="button2" class="btn" value="四角スタンプ">
-			<input type="button" id="button3" class="btn" value="丸スタンプ">
+			<input type="button" id="button3" class="btn" value="丸スタンプ"><br><br>
+			<input type="button" id="button4" class="btn" value="黒">
+			<input type="button" id="button5" class="btn" value="赤">
+			<input type="button" id="button6" class="btn" value="青">
+			<input type="button" id="button7" class="btn" value="黄">
+			<input type="button" id="button8" class="btn" value="保存(まだ使えないよ)">
 		</div>
 	</body>
 </html>
